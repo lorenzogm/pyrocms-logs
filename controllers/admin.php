@@ -13,20 +13,7 @@ class Admin extends Admin_Controller {
 
     public function index()
     {
-        $items = directory_map($this->_folder, 1);
-
-        if(SITE_REF != 'default')
-        {
-            $logs = array();
-
-            foreach ($items as &$item)
-            {
-                if (strpos($item, SITE_REF) !== false)
-                    $logs[] = $item;
-            }
-        }
-        else
-            $logs = $items;
+        $logs = directory_map($this->_folder, 1);
 
         $logs = array_diff($logs, array('.', '..', 'index.php', 'index.html'));
         sort($logs);
